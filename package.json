@@ -1,0 +1,10 @@
+{
+  "name": "todo-list-api",
+  "version": "1.0.0",
+  "description": "Todo list with express",
+  "main": "index.js",
+  "repository": "https://github.com/HurgotDev/todo-list-api.git",
+  "author": "Hugo Gutierrez",
+  "license": "MIT",
+  "private": false
+}
