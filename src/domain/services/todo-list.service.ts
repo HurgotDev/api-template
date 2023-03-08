@@ -2,6 +2,7 @@ import { todoListAdapter } from '../adapters'
 import { type ITodoList } from '../entities/ITodoList'
 
 export const createTodoList = async (text: string): Promise<ITodoList[]> => {
+  if (!text) throw new Error('Field text is required.')
   await todoListAdapter.createTodoList({ text })
   return await todoListAdapter.getAllTodoList()
 }

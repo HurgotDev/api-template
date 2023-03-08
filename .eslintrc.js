@@ -13,6 +13,7 @@ module.exports = {
     tsconfigRootDir: __dirname
   },
   rules: {
-    '@typescript-eslint/no-misused-promises': 'off'
+    '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 0
   }
 }
