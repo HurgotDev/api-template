@@ -1,17 +1,17 @@
 import { Router } from 'express'
-import { type ITodoList } from 'src/domain/entities/ITodoList'
-import { todoListService } from '../../../domain/services'
+import { type INoteDto } from 'src/domain/dtos/note.dto'
+import { noteService } from '../../../domain/services'
 
 const router = Router()
 
 router.get('/', async function (req, res) {
-  const todoList = await todoListService.getAllTodoList()
+  const todoList = await noteService.getAllNoteList()
 
   return res.json(todoList)
 })
 
 router.get('/:id', async function (req, res) {
-  return await todoListService.getTodoListById(+req.params.id).then(todoList => {
+  return await noteService.getNoteById(+req.params.id).then(todoList => {
     return res.json(todoList)
   }).catch(err => {
     return res.status(404).json({
@@ -22,9 +22,9 @@ router.get('/:id', async function (req, res) {
 
 router.post('/', async function (req, res) {
   try {
-    const body: Partial<Pick<ITodoList, 'text'>> = req.body
+    const body: Partial<Pick<INoteDto, 'text'>> = req.body
     if (body?.text === undefined) throw new Error('Text is required.')
-    const newList = await todoListService.createTodoList(body.text)
+    const newList = await noteService.createNote(body.text)
 
     return res.json(newList)
   } catch (err: any) {
@@ -33,7 +33,7 @@ router.post('/', async function (req, res) {
 })
 
 router.delete('/:id', async function (req, res) {
-  return await todoListService.deleteTodoList(+req.params.id)
+  return await noteService.deleteNoteById(+req.params.id)
     .then(todoList => {
       return res.json(todoList)
     })

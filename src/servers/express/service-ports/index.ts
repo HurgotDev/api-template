@@ -1,9 +1,9 @@
 import { Router } from 'express'
 
-import todoListPorts from './todo-list.ports'
+import notePorts from './note.ports'
 
 const router = Router()
 
-router.use('/todo-list', todoListPorts)
+router.use('/notes', notePorts)
 
 export default router
